@@ -2,6 +2,12 @@ package at.ac.fhcampuswien.newsanalyzer.ui;
 
 
 import at.ac.fhcampuswien.newsanalyzer.ctrl.Controller;
+import at.ac.fhcampuswien.newsapi.NewsApi;
+import at.ac.fhcampuswien.newsapi.NewsApiBuilder;
+import at.ac.fhcampuswien.newsapi.beans.NewsResponse;
+import at.ac.fhcampuswien.newsapi.enums.Country;
+import at.ac.fhcampuswien.newsapi.enums.Endpoint;
+import java.util.Scanner;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,19 +20,28 @@ public class UserInterface
 	public void getDataFromCtrl1(){
 		System.out.println("ABC");
 
-		ctrl.process();
+		ctrl.process("ABC", "2021-06-01");
 	}
 
 	public void getDataFromCtrl2(){
 		// TODO implement me
+		ctrl.process("ball", "2021-06-01");
 	}
 
 	public void getDataFromCtrl3(){
 		// TODO implement me
+		ctrl.process("corona", "2021-06-01");
 	}
 	
 	public void getDataForCustomInput() {
 		// TODO implement me
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Enter keyword: ");
+		String choice = scanner.next();
+		System.out.print("Enter From-Date(\"2021-06-01\"): ");
+		String fromDate = scanner.next();
+		System.out.print("Enter Country code (at): ");
+		ctrl.process(choice, fromDate);
 	}
 
 
@@ -34,8 +49,8 @@ public class UserInterface
 		Menu<Runnable> menu = new Menu<>("User Interface");
 		menu.setTitle("Wählen Sie aus:");
 		menu.insert("a", "Choice ABC", this::getDataFromCtrl1);
-		menu.insert("b", "Choice DEF", this::getDataFromCtrl2);
-		menu.insert("c", "Choice 3", this::getDataFromCtrl3);
+		menu.insert("b", "Choice BALL", this::getDataFromCtrl2);
+		menu.insert("c", "Choice CORONA", this::getDataFromCtrl3);
 		menu.insert("d", "Choice User Input:",this::getDataForCustomInput);
 		menu.insert("q", "Quit", null);
 		Runnable choice;
