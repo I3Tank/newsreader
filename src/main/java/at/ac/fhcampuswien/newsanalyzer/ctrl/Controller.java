@@ -36,7 +36,7 @@ public class Controller {
 				System.out.println("Number of articles: " + articles.size());
 				System.out.println("Provides most articles: " + analiseProvider(articles));
 				System.out.println("Author with shortest name: " + shortestAuthorName(articles));
-				System.out.println("Articles sorted alphabetically: ");
+				System.out.println("Articles sorted by length and alphabetically: ");
 				List<Article> sortedArticleList = sortArticles(articles);
 				sortedArticleList.stream().forEach(article -> System.out.println(article.toString()));
 				//download Articles in .txt file
